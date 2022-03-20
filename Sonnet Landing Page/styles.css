@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Mulish&display=swap');
+
+:root {
+  --left-bg-color: rgba(163, 255, 247, 0.795);
+  --right-bg-color: rgba(43, 43, 43, 0.918);
+  --left-btn-hover-color: rgb(252, 201, 192);;
+  --right-btn-hover-color: rgb(2, 2, 2);
+  /* transparency is created using the last number in the row. 1 means no transparency while any number less than will create transparency. */
+  --hover-width: 75%;
+  --other-width: 25%;
+  --speed: 1000ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+margin: 0;
+}
+
+#hero-img {
+  font-family: "Dancing Script", cursive;
+  height: 75vh;
+  overflow-x: hidden;
+}
+
+nav {
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: 20px;
+}
+
+h1 {
+  font-family: "Dancing Script", cursive;
+  position: absolute;
+  left: 2rem;
+  font-size: 3.5rem;
+  margin: 1rem;
+}
+
+h2 {
+  font-size: 4rem;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+  /* transform: translateX helps to bring the titles to the center of their repsective side. Otherwise they will try to center on the background image. */
+  white-space: nowrap;
+  /* white-space: nowrap; protects text in the header from wraping down when building a responsive website. */
+}
+
+p {
+  color: #fff;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.btn {
+  font-family: "Mulish", sans-serif;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 40%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  color: #fff;
+  border: #fff solid 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 15rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  outline: 0;
+}
+/* left and top adjuest the button location on their respective areas. Remember everything naturally centers to their specific image. */
+
+.btn:active {
+  transform: translateX(-120px) scale(0.96);
+}
+
+.split.left .btn:hover {
+  background-color: var(--left-btn-hover-color);
+  border-color: var(--left-btn-hover-color);
+  border: rgb(0, 0, 0) solid 0.2rem;
+}
+
+.split.right .btn:hover {
+  background-color: var(--right-btn-hover-color);
+  border-color: var(--right-btn-hover-color);
+  border: rgb(109, 109, 109) solid 0.2rem;
+}
+
+.left-words {
+  color: black;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #333;
+}
+
+/* .split begins the split process. items will overlap one another. */
+.split {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Separation of the two begins here. Specifically when you through xbox to the right as it was previously on the playstation side merging with the text. Each set of text is assigned the split class followed by their side class. Remember you can name classes anything you want just make sure that whoever succeeds you can look at your code and understand what is occurring. */
+.split.left {
+  left: 0;
+  background: url("img/boomwhackers.jpg") center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.split.left::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--left-bg-color);
+}
+
+.split.right {
+  right: 0;
+  background: url("img/orchestra.webp") center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.split.right::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--right-bg-color);
+}
+
+.split.right,
+.split.left,
+.split.right::before,
+.split.left::before {
+  transition: all var(--speed) ease-in-out;
+}
+
+.hover-left .left {
+  width: var(--hover-width);
+}
+/* these inputs regarding hovering and width allow the images to expand as the cursor is moving over them when JS is added. */
+.hover-left .right {
+  width: var(--other-width);
+}
+
+.hover-right .right {
+  width: var(--hover-width);
+}
+/* these inputs regarding hovering and width allow the images to expand as the cursor is moving over them when JS is added. */
+.hover-right .left {
+  width: var(--other-width);
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 1.2rem;
+    width: 12rem;
+  }
+}
