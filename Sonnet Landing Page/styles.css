@@ -3,7 +3,7 @@
 :root {
   --left-bg-color: rgba(163, 255, 247, 0.795);
   --right-bg-color: rgba(43, 43, 43, 0.918);
-  --left-btn-hover-color: rgb(252, 201, 192);;
+  --left-btn-hover-color: rgb(252, 201, 192);
   --right-btn-hover-color: rgb(2, 2, 2);
   /* transparency is created using the last number in the row. 1 means no transparency while any number less than will create transparency. */
   --hover-width: 75%;
@@ -17,12 +17,14 @@
 
 body {
 margin: 0;
+background-color: rgb(252,201,192);
 }
+
 
 #hero-img {
   font-family: "Dancing Script", cursive;
-  height: 75vh;
-  overflow-x: hidden;
+  height: 65vh;
+  /* overflow-x: hidden; */
 }
 
 nav {
@@ -46,6 +48,15 @@ h1 {
   margin: 1rem;
 }
 
+video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-size: cover;
+  opacity: 0.8;
+}
+
 h2 {
   font-size: 4rem;
   color: #fff;
@@ -56,6 +67,19 @@ h2 {
   /* transform: translateX helps to bring the titles to the center of their repsective side. Otherwise they will try to center on the background image. */
   white-space: nowrap;
   /* white-space: nowrap; protects text in the header from wraping down when building a responsive website. */
+}
+
+.contact {
+  margin:0 auto;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  color: white;
 }
 
 p {
@@ -177,13 +201,81 @@ p {
 /* these inputs regarding hovering and width allow the images to expand as the cursor is moving over them when JS is added. */
 .hover-right .left {
   width: var(--other-width);
+  
+}
+
+.information {
+  align-items: center;
+}
+
+.pastel-info {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 3rem auto;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  width: 400px;
+  height: 175px;
+  font-size: 16px;
+  border: 3px solid black;
+  padding: 12px;
+  text-align: left;
+  vertical-align: middle;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.box {
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  transform: translateX(400%);
+  transition: transform 0.6s ease;
+  opacity: 0;
+  background-color: rgba(163, 255, 247, 0.733);
+}
+
+
+.box:nth-of-type(even) {
+  transform: translateX(-400%);
+  opacity: 1;
+}
+
+.box.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.space {
+  background-color: rgba(252, 201, 192, 0.74);
+  padding: 5vh;
+  margin: 0;
+}
+
+#information-pastel {
+  background-color: rgba(252, 201, 192, 0.74);
+  margin: auto;
+}
+
+.contact {
+  background-color: rgba(0, 0, 0, 0.918);
+}
+
+.dark {
+  background-color: rgba(0, 0, 0, 0.918);
+  color: #fff;
+  /* border: rgb(109, 109, 109) solid 0.2rem; */
+}
+
+.darkbox {
+  background-color: rgba(0, 0, 0, 0.918);
+  color: #fff;
+  border: 7px solid rgb(109, 109, 109) solid 0.2rem;
 }
 
 @media (max-width: 800px) {
   h1 {
     font-size: 2rem;
   }
-
+  
   .btn {
     padding: 1.2rem;
     width: 12rem;
